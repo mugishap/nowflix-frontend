@@ -15,6 +15,7 @@
     "react-awesome-reveal": "^4.2.3",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-lazyload": "^3.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
     "react-toastify": "^9.1.1",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "@types/react-lazyload": "^3.2.0",
     "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",

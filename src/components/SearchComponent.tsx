@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { baseUrl } from '../constants/movie'
 import { searchMovies } from '../hooks'
+import {  Slide } from "react-awesome-reveal";
 
 interface Props {
+    showSearch:boolean
     setShowSearch: Function
 }
 
-const SearchComponent: React.FC<Props> = ({ setShowSearch }) => {
+const SearchComponent: React.FC<Props> = ({ showSearch,setShowSearch }) => {
 
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string>("")
@@ -27,11 +29,13 @@ const SearchComponent: React.FC<Props> = ({ setShowSearch }) => {
     }, [query])
 
     return (
-        <div className='absolute w-screen justify-center h-screen bg-black/80 flex backdrop-blur-sm items-center z-[2]'>
+        <div className={`absolute ${
+            showSearch ? "-translate-x-0" : "-translate-x-[100%]"
+          } w-screen  justify-center h-screen bg-black/40 flex backdrop-blur-sm items-center z-[2]`}>
             <div className='absolute z-[3] w-full h-full' onClick={() => setShowSearch(false)}></div>
-            <div className='w-9/12 px-6 md:w-7/12 h-4/5 rounded flex flex-col py-6 items-center justify-between bg-gray-900 z-[4]'>
-                <input value={query} type="text" onChange={(e) => setQuery(e.target.value)} className='rounded p-3 bg-white/20 outline-none text-white w-full placeholder:text-white/60' placeholder='Search here...' />
-                <div className='mt-6 w-full h-[90%] overflow-y-auto flex items-center justify-start'>
+            <div className='w-9/12 px-6 md:w-7/12 h-[90%] rounded flex flex-col py-6 items-center justify-between bg-gray-900 z-[4]'>
+                <input value={query} type="text" onChange={(e) => setQuery(e.target.value)} className='rounded p-3 bg-white/30 outline-none text-white w-full placeholder:text-white/60' placeholder='Search here...' />
+                <div className='mt-4 w-full h-[82%] overflow-y-scroll flex items-center justify-start'>
                     {
                         loading
                             ?

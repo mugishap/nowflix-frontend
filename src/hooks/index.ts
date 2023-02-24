@@ -2,16 +2,15 @@ import api from "../api";
 import { setMovie, setSimilarMovies } from "../redux/slices/movieSlice";
 import { setAllMovies, setSearchResults } from "../redux/slices/moviesSlice";
 
-export const getMovies = async (dispatch: any, setError: Function, setLoading: Function) => {
+export const getMovies = async (dispatch: any, setError: Function, setLoading: Function, page?: number) => {
     try {
-        const popular = await (await api.get(`/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=1`)).data
-        const topRated = await (await api.get(`/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=1`)).data
-        const upcoming = await (await api.get(`/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=1`)).data
-        const nowPlaying = await (await api.get(`/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=1`)).data
-        const latest = await (await api.get(`/movie/latest?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=1`)).data
+        const popular = await (await api.get(`/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
+        const topRated = await (await api.get(`/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
+        const upcoming = await (await api.get(`/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
+        const nowPlaying = await (await api.get(`/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
+        const latest = await (await api.get(`/movie/latest?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
         dispatch(setAllMovies({ popular, topRated, latest, upcoming, nowPlaying }));
         setLoading(false)
-
     }
     catch (error: any) {
         setError("Failed to fetch movies")

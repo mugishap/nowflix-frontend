@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { BiMenu, BiSearchAlt2, BiX } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
+import logo from "../assets/logo.png"
 
 interface Props {
     setShowNavbar: Function
@@ -15,7 +16,7 @@ const Navbar: React.FC<Props> = ({ navBarLinks, showSearch, showNavbar, setShowS
     return (
         <div className='absolute top-0 z-10 left-0 py-4 w-full h-42 bg-gradient-to-b from-black via-transparent3 to-transparent flex items-center px-12 justify-between'>
             <div className='flex items-center'>
-                <img className='w-24 mr-20' src="src/assets/logo.png" alt="" />
+                <img className='w-24 mr-20' src={logo} alt="" />
                 <ul className='hidden lg:flex'>
                     {
                         navBarLinks.map((link, index) => (

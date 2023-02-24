@@ -21,7 +21,7 @@ const MovieComponent: React.FC<Props> = ({ }) => {
         const handleResize = () => {
             setScreenWidth(window.innerWidth);
         };
-
+document.title=`${movie.title} | Nowflix`
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize);
@@ -29,10 +29,10 @@ const MovieComponent: React.FC<Props> = ({ }) => {
     }, []);
     return (
         <div className='w-full flex flex-col items-center'>
-            <div className='w-full h-[80vh] bg-no-repeat bg-cover' style={{ background: `url('${baseUrl + movie.backdrop_path}')` }}>
-                <div className='w-full h-full bg-gradient-to-r items-end justify-start pb-12 pl-12 flex from-black/90 via-black/70 to-transparent'>
-                    <div className='flex flex-col w-1/2 items-start'>
-                        <span className='text-white mb-6 text-6xl font-extrabold'>{movie.original_title}</span>
+            <div className='w-full h-[80vh] ' style={{ background: `url('${baseUrl + movie.backdrop_path}')` , backgroundAttachment: 'fixed', backgroundRepeat:"no-repeat",backgroundSize: 'cover'      }}>
+                <div className='w-full h-full bg-gradient-to-t lg:bg-gradient-to-r items-end justify-start pb-12 pl-12 flex from-black/90 via-black/70 to-transparent'>
+                    <div className='flex flex-col lg:w-1/2 items-start'>
+                        <span className='text-white mb-6 text-6xl font-extrabold'>{movie.title}</span>
                         <span className='text-white text-xl'>{movie.overview}</span>
                         <div className='flex my-8 items-center justify-center'>
                             {
