@@ -98,7 +98,6 @@ const Movies = () => {
                                         <Swiper
                                             spaceBetween={10}
                                             slidesPerView={1}
-                                            navigation={true}
                                             scrollbar={{ draggable: true }}
                                             modules={[Navigation, Pagination, Scrollbar, A11y]}
                                             className="h-full"

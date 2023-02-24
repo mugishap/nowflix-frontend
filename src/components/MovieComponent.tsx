@@ -51,7 +51,7 @@ const MovieComponent: React.FC<Props> = ({ }) => {
                         <div className='flex items-center justify-start my-2'>
                             <span className='text-white font-bold'>Ratings: &nbsp;</span>
                             <span className='text-white'>
-                            <Rating name="read-only" value={Math.ceil(movie.vote_average as number)} readOnly />
+                                <Rating name="read-only" value={Math.ceil(movie.vote_average as number)} readOnly />
                             </span>
                         </div>
                         <div className='flex items-center justify-start my-2'>
@@ -79,9 +79,9 @@ const MovieComponent: React.FC<Props> = ({ }) => {
                             ?
                             <Swiper
                                 spaceBetween={3}
-                                slidesPerView={Math.floor(screenWidth / 380)}
-                                navigation={true}
+                                slidesPerView={Math.floor(screenWidth / 340)}
                                 scrollbar={{ draggable: true }}
+                                autoplay={{ delay: 4000 }}
                                 modules={[Navigation, Pagination, Scrollbar, A11y]}
                             >
                                 {
@@ -98,6 +98,7 @@ const MovieComponent: React.FC<Props> = ({ }) => {
                             :
                             <span>Oops, this movie has no others that are similar to it!!!</span>
                     }
+
                 </div>
             </div>
         </div>

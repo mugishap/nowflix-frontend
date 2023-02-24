@@ -9,6 +9,10 @@ import 'swiper/css';
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import 'swiper/css/autoplay';
+
+import { Autoplay } from 'swiper';
+import SwiperCore from 'swiper'
 const Movies = lazy(() => import('./pages/Movies/Movies'))
 const Home = lazy(() => import('./pages/Home/Home'))
 const Movie = lazy(() => import('./pages/Movie/Movie'))
@@ -29,6 +33,7 @@ function App() {
     if (error)
       toast.error(error)
   }, [error])
+  SwiperCore.use([Autoplay]);
 
   return (
     <Suspense

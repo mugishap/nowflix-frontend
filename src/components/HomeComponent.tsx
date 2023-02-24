@@ -12,23 +12,28 @@ console.log(moviesSlice);
         {
             name: 'Romance',
             movies: moviesSlice.romance.results,
+            delay:3000
         },
         {
             name: 'Horror',
             movies: moviesSlice.horror.results,
+            delay:4000
         },
         {
             name: 'Netflix Originals',
             movies: moviesSlice.netflixOriginals.results,
+            delay:3000
         },
 
         {
             name: 'Action',
             movies: moviesSlice.action.results,
+            delay:4000
         },
         {
             name: 'Comedy',
             movies: moviesSlice.comedy.results,
+            delay:3000
         },
     ]
 

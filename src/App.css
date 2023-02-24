@@ -17,26 +17,11 @@
     cursor: pointer;
 }
 
-.swiper-button-next{
-    background-color: white;
-    border-radius: 100%;
-    height: 45px;
-    width: 45px !important;
-    color: #DB202C;
+.swiper-scrollbar-drag.swiper-scrollbar-drag {
+    background-color: #DB202C;
+    cursor: pointer;
 }
 
-.swiper-button-next > *{
-    transform: scale(2);
-}
-
-.swiper-button-prev{
-    background-color: white;
-    border-radius: 100%;
-    height: 45px;
-    width: 45px !important;
-    color: #DB202C;
-}
-
-.swiper-button-next > *{
-    transform: scale(2);
+.swiper-scrollbar-thumb.swiper-scrollbar-thumb {
+    background-color: #db202cba;
 }

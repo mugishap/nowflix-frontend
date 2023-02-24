@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation, Pagination, A11y } from 'swiper';
 import { baseUrl } from '../constants/movie';
 import { Link } from 'react-router-dom';
 import { Movie } from '../types';
 import { Fade } from 'react-awesome-reveal';
 
-
 interface Props {
     category: {
+        delay: number;
         name: string,
-        movies: Movie[]
+        movies: Movie[],
     }
 }
 
@@ -39,10 +39,9 @@ const Category: React.FC<Props> = ({ category }) => {
                 <Swiper
                     spaceBetween={3}
                     slidesPerView={Math.floor(screenWidth / 320)}
-                    navigation={true}
                     scrollbar={{ draggable: true }}
-                    modules={[Navigation, Pagination, Scrollbar, A11y]}
-
+                    modules={[Navigation, Pagination, A11y]}
+                    autoplay={{ delay: category.delay, disableOnInteraction: false }}
                 >
                     {
                         category.movies.map((movie: Movie, index: number) => (

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { BiMenu, BiSearchAlt2, BiX } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
+import account from "../assets/account.png"
 
 interface Props {
     setShowNavbar: Function
@@ -35,7 +36,7 @@ const Navbar: React.FC<Props> = ({ navBarLinks, showSearch, showNavbar, setShowS
                 <div className='hidden lg:flex'>
                     <span className='font-bold text-xl mr-10 text-white'>Kids</span>
                     <Link to={"/profile"}>
-                        <img src="src/assets/account.png" className='rounded' alt="" />
+                        <img src={account} className='rounded' alt="" />
                     </Link>
                 </div>
             </div>
