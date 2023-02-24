@@ -12,8 +12,8 @@ export interface Country {
 }
 
 export interface Movie {
-  genres: Genre[]
-  production_countries: Country[]
+  genres?: Genre[]
+  production_countries?: Country[]
   votes?: number | any
   original_title?: string
   title?: string

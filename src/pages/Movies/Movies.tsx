@@ -97,12 +97,12 @@ const Movies = () => {
                                     <div className='w-full h-full'>
                                         <Swiper
                                             spaceBetween={10}
-
                                             slidesPerView={1}
+                                            navigation={true}
                                             scrollbar={{ draggable: true }}
                                             modules={[Navigation, Pagination, Scrollbar, A11y]}
                                             className="h-full"
-                                            autoplay={{ delay: 1, disableOnInteraction: false }}
+                                            autoplay={{ delay: 1000 }}
                                         >
                                             {
                                                 latest.map((movie: Movie, index: number) => (

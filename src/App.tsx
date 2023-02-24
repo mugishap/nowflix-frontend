@@ -9,10 +9,11 @@ import 'swiper/css';
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import NotFound from './pages/404/NotFound';
 const Movies = lazy(() => import('./pages/Movies/Movies'))
 const Home = lazy(() => import('./pages/Home/Home'))
 const Movie = lazy(() => import('./pages/Movie/Movie'))
+const Search = lazy(() => import('./pages/Search/Search'))
+const NotFound = lazy(() => import('./pages/404/NotFound'))
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
                 <Route element={<Home />} path="/"></Route>
                 <Route element={<Movie />} path="/movie/:movieId"></Route>
                 <Route element={<Movies />} path="/movies"></Route>
+                <Route element={<Search />} path="/search/:query"></Route>
                 <Route element={<NotFound />} path="*"></Route>
               </Routes>
             </BrowserRouter>

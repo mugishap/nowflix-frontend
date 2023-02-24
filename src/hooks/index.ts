@@ -26,6 +26,16 @@ export const getMovies = async (dispatch: any, setError: Function, setLoading: F
     }
 }
 
+export const getSearchedMovies = async (query: string, dispatch: any, setError: Function, setLoading: Function, page?: number) => {
+    try {
+        const response = await api.get(`/search/movie?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&query=${query}&page=${page ? page : 1}&include_adult=false`)
+        const data = response.data
+        dispatch(setSearchResults(data.results));
+        setLoading(false)
+    } catch (error) {
+        setError("Failed to search movies")
+    }
+}
 export const getMovie = async (id: string | undefined, dispatch: any, setError: Function, setLoading: Function) => {
     try {
         const response = await (await api.get(`/movie/${id}?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US`))

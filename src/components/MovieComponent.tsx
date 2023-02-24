@@ -5,7 +5,7 @@ import { baseUrl } from '../constants/movie'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Genre, Movie } from '../types';
-
+import Rating from '@mui/material/Rating';
 
 interface Props {
 }
@@ -25,7 +25,7 @@ const MovieComponent: React.FC<Props> = ({ }) => {
         document.title = `${movie.title} | Nowflix`
         window.addEventListener('resize', handleResize);
         return () => {
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('resize', handleResize)
         };
     }, []);
     return (
@@ -39,7 +39,7 @@ const MovieComponent: React.FC<Props> = ({ }) => {
                         </div>
                         <div className='flex my-8 items-center justify-center'>
                             {
-                                movie.genres.map((genre: Genre, index: number) => (
+                                movie.genres?.map((genre: Genre, index: number) => (
                                     <Link to={`genre/${genre.id}`} key={index} className='hover:bg-gray-600 bg-gray-800 px-4 py-1 mx-2 rounded-2xl cursor-pointer text-white'>{genre.name} </Link>
                                 ))
                             }
@@ -49,14 +49,20 @@ const MovieComponent: React.FC<Props> = ({ }) => {
                             <span className='text-white'>{movie.release_date}</span>
                         </div>
                         <div className='flex items-center justify-start my-2'>
-                            <span className='text-white font-bold'>Vote Average: &nbsp;</span>
-                            <span className='text-white'>{movie.vote_average}</span>
+                            <span className='text-white font-bold'>Ratings: &nbsp;</span>
+                            <span className='text-white'>
+                            <Rating name="read-only" value={Math.ceil(movie.vote_average as number)} readOnly />
+                            </span>
+                        </div>
+                        <div className='flex items-center justify-start my-2'>
+                            <span className='text-white font-bold'>Vote Count: &nbsp;</span>
+                            <span className='text-white'>{movie.vote_count}</span>
                         </div>
                         <div className='flex items-center justify-start my-2'>
                             <span className='text-white font-bold'>Production Countries: &nbsp;</span>
                             <div className='flex items-center justify-center'>
                                 {
-                                    movie.production_countries.map((country: Genre, index: number) => (
+                                    movie.production_countries?.map((country: Genre, index: number) => (
                                         <Link to={`country/${country.id}`} key={index} className='hover:bg-gray-600 bg-gray-800 px-4 py-1 mx-2 rounded-2xl cursor-pointer text-white'>{country.name} </Link>
                                     ))
                                 }

@@ -1,4 +1,4 @@
-import { createSlice, TaskAbortError } from '@reduxjs/toolkit'
+import { createSlice, Slice, TaskAbortError } from '@reduxjs/toolkit'
 import { Movie } from '../../types'
 
 const initialState: {
@@ -27,13 +27,13 @@ const initialState: {
     topRate: [],
     action: [],
     horror: [],
-    comedy:[],
+    comedy: [],
     romance: [],
     documentaries: [],
     searchResults: []
 }
 
-const moviesSlice = createSlice({
+const moviesSlice: Slice = createSlice({
     name: "movies",
     initialState,
     reducers: {
