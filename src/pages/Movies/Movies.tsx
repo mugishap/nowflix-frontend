@@ -35,11 +35,14 @@ const Movies = () => {
         { value: 'nowPlaying', name: 'Now Playing' },
     ]
     useEffect(() => {
-        setMovies(moviesSlice[type].results)
+        const data = moviesSlice[type].results
+        setMovies(data)
+        console.log(data);
     }, [type])
 
     useEffect(() => {
         getMovies(dispatch, setError, setLoading, page)
+        setMovies([...moviesSlice[type].results])
     }, [page])
 
     const getPageNumbers = () => {
@@ -133,7 +136,7 @@ const Movies = () => {
                     </div>
                 </div>
 
-                <div className="flex justify-center mt-10">
+                <div className="flex justify-center my-12">
                     <div className="flex justify-center items-center space-x-2 mt-4">
                         {page > 1 && (
                             <button

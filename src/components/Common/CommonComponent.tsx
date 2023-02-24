@@ -1,6 +1,7 @@
 import React, { ReactNode, useState } from "react";
 import { Slide } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
+import Footer from "../Footer";
 import Navbar from "../Navbar";
 import SearchComponent from "../SearchComponent";
 
@@ -67,6 +68,7 @@ const CommonComponent: React.FC<{ children: ReactNode }> = ({ children }) => {
             <Slide direction='up' triggerOnce>
                 <div className=" w-full h-full flex flex-col items-center">{children}</div>
             </Slide>
+            <Footer />
         </div>
     );
 };
