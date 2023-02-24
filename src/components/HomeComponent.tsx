@@ -6,38 +6,39 @@ import Category from './Category'
 
 const HomeComponent = () => {
     const { moviesSlice } = useSelector((state: any) => state)
+console.log(moviesSlice);
 
     const categories = [
         {
-            name: 'Popular',
-            movies: moviesSlice.popular.results,
+            name: 'Romance',
+            movies: moviesSlice.romance.results,
         },
         {
-            name: 'Upcoming',
-            movies: moviesSlice.upcoming.results,
+            name: 'Horror',
+            movies: moviesSlice.horror.results,
         },
         {
-            name: 'Latest',
-            movies: moviesSlice.latest.results,
+            name: 'Netflix Originals',
+            movies: moviesSlice.netflixOriginals.results,
         },
 
         {
-            name: 'Top Rated',
-            movies: moviesSlice.topRated.results,
+            name: 'Action',
+            movies: moviesSlice.action.results,
         },
         {
-            name: 'Now Playing',
-            movies: moviesSlice.nowPlaying.results,
+            name: 'Comedy',
+            movies: moviesSlice.comedy.results,
         },
     ]
 
     return (
         <div className='w-full px-6 flex items-center pt-10 flex-col'>
-            {/* {
+            {
                 categories.map((category, index) => (
                     <Category key={index} category={category} />
                 ))
-            } */}
+            }
         </div>
     )
 }

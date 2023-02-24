@@ -30,14 +30,13 @@ const Category: React.FC<Props> = ({ category }) => {
 
     return (
         <div className='w-full flex flex-col'>
-            <span>{category.name}</span>
+            <span className='text-xl font-bold'>{category.name}</span>
             <Swiper
                 spaceBetween={5}
-                slidesPerView={Math.floor(screenWidth / 380)}
+                slidesPerView={Math.floor(screenWidth / 350)}
                 navigation={true}
                 scrollbar={{ draggable: true }}
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
-
             >
                 {
                     category.movies.map((movie: Movie, index: number) => (

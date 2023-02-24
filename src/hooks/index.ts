@@ -11,13 +11,14 @@ export const getMovies = async (dispatch: any, setError: Function, setLoading: F
         const nowPlaying = await (await api.get(`/movie/now_playing?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
         const latest = await (await api.get(`/movie/latest?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
 
-        const romance = await (await api.get(`${requests.fetchRomanceMovies}page=${page ? page : 1}`)).data
-        const action = await (await api.get(`${requests.fetchActionMovies}&page=${page ? page : 1}`)).data
-        const horror = await (await api.get(`${requests.fetchHorrorMovies}&page=${page ? page : 1}`)).data
-        const netflixOriginals = await (await api.get(`${requests.fetchComedyMovies}&page=${page ? page : 1}`)).data
-        const documentaries = await (await api.get(`${requests.fetchDocumentaries}&page=${page ? page : 1}`)).data
+        const romance = await (await api.get(`${requests.fetchRomanceMovies}`)).data
+        const action = await (await api.get(`${requests.fetchActionMovies}`)).data
+        const horror = await (await api.get(`${requests.fetchHorrorMovies}`)).data
+        const comedy = await (await api.get(`${requests.fetchComedyMovies}`)).data
+        const netflixOriginals = await (await api.get(`${requests.fetchNetflixOriginals}`)).data
+        const documentaries = await (await api.get(`${requests.fetchDocumentaries}`)).data
 
-        dispatch(setAllMovies({ popular, topRated, latest, upcoming, nowPlaying, romance, action, horror, netflixOriginals, documentaries }));
+        dispatch(setAllMovies({ popular, topRated, latest, upcoming, nowPlaying, romance, action, comedy, horror, netflixOriginals, documentaries }));
         setLoading(false)
     }
     catch (error: any) {
