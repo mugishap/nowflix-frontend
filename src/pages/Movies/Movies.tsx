@@ -9,6 +9,7 @@ import { BiPlay } from 'react-icons/bi';
 import Select from '../../components/CustomSelect';
 import { Movie } from '../../types';
 import { getMovies } from '../../hooks';
+import { Fade, Slide } from 'react-awesome-reveal';
 
 const Movies = () => {
     const dispatch = useDispatch()
@@ -25,7 +26,7 @@ const Movies = () => {
     const [page, setPage] = useState(1)
     const [error, setError] = useState("")
     const [totalPages, setTotalPages] = useState<number>(500);
-    const [loading, setLoading] = useState<number>(1);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const options = [
         { value: 'popular', name: 'Popular' },
@@ -40,8 +41,10 @@ const Movies = () => {
     }, [type])
 
     useEffect(() => {
+        setLoading(true)
         getMovies(dispatch, setError, setLoading, page)
         const data = moviesSlice[type].results
+        console.log(data);
         setMovies(data)
     }, [page])
 
@@ -81,60 +84,70 @@ const Movies = () => {
     return (
         <CommonComponent>
             <div className='w-full flex-col items-center'>
-                <div className='w-full h-[60vh]'>
-                    <div className='w-full h-full'>
-                        <Swiper
-                            spaceBetween={10}
-                            slidesPerView={1}
-                            navigation={true}
-                            scrollbar={{ draggable: true }}
-                            modules={[Navigation, Pagination, Scrollbar, A11y]}
-                            className="h-full"
-                            autoplay={{ delay: 1000 }}
-                        >
-                            {
-                                latest.map((movie: Movie, index: number) => (
-                                    <SwiperSlide key={index} className="h-full">
-                                        <div style={{ backgroundImage: `url('${baseUrl + movie.backdrop_path}')`, backgroundAttachment: 'fixed', backgroundRepeat: "no-repeat", backgroundSize: 'cover' }} className='justify-start items-end flex w-full h-full rounded-lg'>
-                                            <div className='bg-gradient-to-t from-black/90 via-black/70 pl-8 pt-16 to-transparent w-full flex h-full items-start justify-end flex-col '>
-                                                <span className='text-white mb-10 text-5xl font-extrabold'>{movie.original_title}</span>
-                                                <Link to={`/movie/${movie.id}`} className='w-fit px-4 mb-12 h-14 flex items-center justify-center rounded bg-white mr-4 text-center font-bold text-2xl text-black hover:bg-white/80'>
-                                                    <BiPlay size={40} className="" />
-                                                    <span>
-                                                        Watch now
-                                                    </span>
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </SwiperSlide>
-                                ))
-                            }
-                        </Swiper>
-                    </div>
-                </div>
-
-                <div className='w-full flex items-center justify-between px-20'>
-                    <span className='rounded text-white text-2xl font-bold my-2 py-3 px-6' >
-                        Watch the latest trending movies !!!
-                    </span>
-                    <div>
-                        <Select options={options} selectedValue={type} setSelectedValue={setType} />
-                    </div>
-                </div>
-
-                <div className='w-full grid-cols-1 grid px-4 sm:grid-cols-2 md:grid-cols-3 mlg:grid-cols-4 lg:grid-cols-5'>
-                    {
-                        movies.map((movie: Movie, index: number) => (
-                            <Link to={`/movie/${movie.id}`} key={index} className='w-11/12 h-72 rounded-lg flex flex-col items-center justify-center'>
-                                <img className='object-cover w-full h-3/4' src={baseUrl + movie.poster_path} alt="" />
-                                <span className='text-white font-bold text-xl mt-2'>{movie.title}</span>
-                            </Link>
-                        ))
-                    }
-                    <div className='w-full flex items-center justiyf-center'>
-                        <div className='rounded'></div>
-                    </div>
-                </div>
+                {
+                    loading
+                        ?
+                        <div className='w-full h-[40vh] bg-black flex justify-center items-center'>
+                            <div className='animate-spin rounded-full h-32 w-32 border-b-2 border-nf-red'></div>
+                        </div>
+                        :
+                        <Slide direction='up' triggerOnce>
+                            <section>
+                                <div className='w-full h-[60vh]'>
+                                    <div className='w-full h-full'>
+                                        <Swiper
+                                            spaceBetween={10}
+                                            slidesPerView={1}
+                                            navigation={true}
+                                            scrollbar={{ draggable: true }}
+                                            modules={[Navigation, Pagination, Scrollbar, A11y]}
+                                            className="h-full"
+                                            autoplay={{ delay: 1000 }}
+                                        >
+                                            {
+                                                latest.map((movie: Movie, index: number) => (
+                                                    <SwiperSlide key={index} className="h-full">
+                                                        <div style={{ backgroundImage: `url('${baseUrl + movie.backdrop_path}')`, backgroundAttachment: 'fixed', backgroundRepeat: "no-repeat", backgroundSize: 'cover' }} className='justify-start items-end flex w-full h-full rounded-lg'>
+                                                            <div className='bg-gradient-to-t from-black/90 via-black/70 pl-8 pt-16 to-transparent w-full flex h-full items-start justify-end flex-col '>
+                                                                <Fade className='text-white mb-10 text-5xl font-extrabold'>{movie.original_title}</Fade>
+                                                                <Link to={`/movie/${movie.id}`} className='w-fit px-4 mb-12 h-14 flex items-center justify-center rounded bg-white mr-4 text-center font-bold text-2xl text-black hover:bg-white/80'>
+                                                                    <BiPlay size={40} className="" />
+                                                                    <span>
+                                                                        Watch now
+                                                                    </span>
+                                                                </Link>
+                                                            </div>
+                                                        </div>
+                                                    </SwiperSlide>
+                                                ))
+                                            }
+                                        </Swiper>
+                                    </div>
+                                </div>
+                                <div className='w-full flex items-center justify-between px-20'>
+                                    <span className='rounded text-white text-2xl font-bold my-2 py-3 px-6' >
+                                        Watch the latest trending movies !!!
+                                    </span>
+                                    <div>
+                                        <Select options={options} selectedValue={type} setSelectedValue={setType} />
+                                    </div>
+                                </div>
+                                <div className='w-full grid-cols-1 grid px-4 sm:grid-cols-2 md:grid-cols-3 mlg:grid-cols-4 lg:grid-cols-5'>
+                                    {
+                                        movies.map((movie: Movie, index: number) => (
+                                            <Link to={`/movie/${movie.id}`} key={index} className='w-11/12 h-72 rounded-lg flex flex-col items-center justify-center'>
+                                                <img className='object-cover w-full h-3/4' src={baseUrl + movie.poster_path} alt="" />
+                                                <span className='text-white font-bold text-xl mt-2'>{movie.title}</span>
+                                            </Link>
+                                        ))
+                                    }
+                                    <div className='w-full flex items-center justiyf-center'>
+                                        <div className='rounded'></div>
+                                    </div>
+                                </div>
+                            </section>
+                        </Slide>
+                }
 
                 <div className="flex justify-center my-12">
                     <div className="flex justify-center items-center space-x-2 mt-4">
