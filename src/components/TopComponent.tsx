@@ -7,18 +7,19 @@ import { baseUrl } from '../constants/movie'
 
 const TopComponent = () => {
     const randomNumber = Math.floor(Math.random() * 20)
+
     const { moviesSlice } = useSelector((state: any) => state)
-    const movies = moviesSlice.movies
-    console.log(movies);
-    const [movie, setMovie] = useState(movies[randomNumber])
+    const movies = moviesSlice.popular.results
+    const [movie, setMovie] = useState<any>({})
     useEffect(() => {
         setMovie(movies[randomNumber])
+        
     }, [movies])
     return (
-        <div style={{ background: `url('${baseUrl + movie.backdrop_path}')` }} className='from-black w-full bg-cover bg-fixed flex items-start h-[70vh] justify-start relative'>
-            <div className='w-full h-full bg-gradient-to-t from-black flex items-center justify-end pb-24  flex-col'>
+        <div style={{ backgroundImage: `url('${baseUrl + movie.backdrop_path}')`,backgroundSize:'cover' }} className='from-black w-full flex items-start h-[70vh] justify-start'>
+            <div className='w-full h-full bg-gradient-to-t from-black via-black/40 flex items-center justify-end pb-24  flex-col'>
                 <div className='w-full flex items-center justify-start md:px-10 lg:px-24'>
-                    <div className='w-full md:w-8/12 px-2 lg:w-5/12 flex flex-col'>
+                    <div className='w-full md:w-8/12 px-2 lg:w-8/12 flex flex-col'>
                         <span className='text-5xl mb-10 font-extrabold text-white'>{movie.original_title}</span>
                         <span className=' text-white text-2xl'>
                             {movie.overview}

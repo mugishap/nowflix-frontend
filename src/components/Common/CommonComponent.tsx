@@ -31,7 +31,7 @@ const CommonComponent: React.FC<{ children: ReactNode }> = ({ children }) => {
     ]
 
     return (
-        <div className="relative h-screen w-screen flex flex-col">
+        <div className="relative min-h-screen bg-black/90 w-screen flex flex-col overflow-hidden">
             {
                 showNavbar ?
                     <div className='absolute w-screen justify-center h-screen bg-black/80 flex items-center z-[2]'>
@@ -58,8 +58,8 @@ const CommonComponent: React.FC<{ children: ReactNode }> = ({ children }) => {
                     :
                     null
             }
-            <Navbar navBarLinks={navBarLinks} showNavbar={showNavbar} setShowNavbar={setShowNavbar} setShowSearch={setShowNavbar} showSearch={false} />
-            <div className="w-full h-full flex flex-col items-center">{children}</div>
+            <Navbar navBarLinks={navBarLinks} showNavbar={showNavbar} setShowNavbar={setShowNavbar} setShowSearch={setShowSearch} showSearch={false} />
+            <div className=" w-full h-full flex flex-col items-center">{children}</div>
         </div>
     );
 };

@@ -1,24 +1,30 @@
 import { createSlice, TaskAbortError } from '@reduxjs/toolkit'
 
 const initialState: {
-    movie: any
+    movie: any,
+    similarMovies: any[]
 } = {
-    movie: {}
+    movie: {},
+    similarMovies: []
 }
 
 const moviesSlice = createSlice({
-    name: "movies",
+    name: "movie    ",
     initialState,
     reducers: {
         setMovie: (state, { payload }) => {
             state.movie = payload
         },
         clearMovie: (state) => {
-            state.movie = []
-        }
+            state.movie = {}
+        },
+        setSimilarMovies: (state, { payload }) => {
+            state.similarMovies = payload
+        },
+
     }
 })
 
-export const { setMovie, clearMovie } = moviesSlice.actions
+export const { setMovie, setSimilarMovies, clearMovie } = moviesSlice.actions
 
 export default moviesSlice.reducer

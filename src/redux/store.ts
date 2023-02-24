@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
 import storage from 'redux-persist/lib/storage'
 import moviesReducer from './slices/moviesSlice'
-import movieReducer from './slices/moviesSlice'
+import movieReducer from './slices/movieSlice'
 import { persistReducer, persistStore } from 'redux-persist';
 
 const persistConfig = {

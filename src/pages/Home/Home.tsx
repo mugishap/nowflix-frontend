@@ -10,12 +10,10 @@ const Home = () => {
   }, [])
 
   return (
-    <div className="w-screen h-fit flex flex-col items-center">
-      <CommonComponent>
+    <CommonComponent>
         <TopComponent />
         <HomeComponent />
-      </CommonComponent>
-    </div>
+    </CommonComponent>
   )
 }
 
