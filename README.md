@@ -1,7 +1,4 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="/logo.svg" alt="Project logo"></a>
-</p>
+![Nowflix Logo]("/logo.png")
 
 <h3 align="center">Nowflix Frontend</h3>
 
