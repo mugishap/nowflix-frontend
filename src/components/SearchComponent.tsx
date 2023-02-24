@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { baseUrl } from '../constants/movie'
 import { searchMovies } from '../hooks'
 
@@ -39,12 +40,35 @@ const SearchComponent: React.FC<Props> = ({ setShowSearch }) => {
                             <div className='flex flex-col w-full'>
                                 {
                                     results.map((movie: any, index: number) => (
-                                        <div className='flex w-full px-4 py-2 items-center justify-center my-2 hover:bg-white/30'>
-                                            <img src={baseUrl + movie.backdrop_path} className="object-cover w-24 h-24 rounded" alt="" />
+                                        <Link to={`/movie/${movie.id}`} key={index} className='flex w-full px-4 py-2 items-start justify-start my-2 hover:bg-white/30'>
+                                            <img src={baseUrl + movie.backdrop_path} className="mr-4 object-cover w-24 h-24 rounded" alt="" />
                                             <div className='flex flex-col'>
-                                                Name: {movie.name}
+                                                <span className='flex my-1 text-sm '>
+                                                    <span className='font-bold'>
+                                                        Title:
+                                                    </span>
+                                                    <span>
+                                                        {movie.title}
+                                                    </span>
+                                                </span>
+                                                <span className='flex my-1 text-sm '>
+                                                    <span className='font-bold'>
+                                                        Votes:
+                                                    </span>
+                                                    <span>
+                                                        {movie.votes}
+                                                    </span>
+                                                </span>
+                                                <span className='flex my-1 text-sm '>
+                                                    <span className='font-bold'>
+                                                        Date:
+                                                    </span>
+                                                    <span>
+                                                        {movie.release_date}
+                                                    </span>
+                                                </span>
                                             </div>
-                                        </div>
+                                        </Link>
                                     ))
                                 }
                             </div>
