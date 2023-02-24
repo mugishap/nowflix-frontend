@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { baseUrl } from '../constants/movie'
 import { searchMovies } from '../hooks'
 import {  Slide } from "react-awesome-reveal";
+import { Movie } from '../types'
 
 interface Props {
     showSearch:boolean
@@ -43,7 +44,7 @@ const SearchComponent: React.FC<Props> = ({ showSearch,setShowSearch }) => {
                             :
                             <div className='flex flex-col w-full'>
                                 {
-                                    results.map((movie: any, index: number) => (
+                                    results.map((movie: Movie, index: number) => (
                                         <Link to={`/movie/${movie.id}`} key={index} className='flex w-full px-4 py-2 items-start justify-start my-2 hover:bg-white/30'>
                                             <img src={baseUrl + movie.backdrop_path} className="mr-4 object-cover w-24 h-24 rounded" alt="" />
                                             <div className='flex flex-col'>

@@ -1,8 +1,9 @@
 import { createSlice, TaskAbortError } from '@reduxjs/toolkit'
+import { Movie } from '../../types'
 
 const initialState: {
-    movie: any,
-    similarMovies: any[]
+    movie: Movie,
+    similarMovies: Movie[]
 } = {
     movie: {},
     similarMovies: []

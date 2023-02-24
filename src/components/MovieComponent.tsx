@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { baseUrl } from '../constants/movie'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Genre, Movie } from '../types';
 
 
 interface Props {
@@ -36,7 +37,7 @@ document.title=`${movie.title} | Nowflix`
                         <span className='text-white text-xl'>{movie.overview}</span>
                         <div className='flex my-8 items-center justify-center'>
                             {
-                                movie.genres.map((genre: any, index: number) => (
+                                movie.genres.map((genre: Genre, index: number) => (
                                     <Link to={`genre/${genre.id}`} key={index} className='hover:bg-gray-600 bg-gray-800 px-4 py-1 mx-2 rounded-2xl cursor-pointer text-white'>{genre.name} </Link>
                                 ))
                             }
@@ -53,7 +54,7 @@ document.title=`${movie.title} | Nowflix`
                             <span className='text-white font-bold'>Production Countries: &nbsp;</span>
                             <div className='flexitems-center justify-center'>
                                 {
-                                    movie.production_countries.map((genre: any, index: number) => (
+                                    movie.production_countries.map((genre: Genre, index: number) => (
                                         <Link to={`genre/${genre.id}`} key={index} className='hover:bg-gray-600 bg-gray-800 px-4 py-1 mx-2 rounded-2xl cursor-pointer text-white'>{genre.name} </Link>
                                     ))
                                 }
@@ -74,7 +75,7 @@ document.title=`${movie.title} | Nowflix`
 
                     >
                         {
-                            similarMovies.map((movie: any, index: number) => (
+                            similarMovies.map((movie: Movie, index: number) => (
                                 <SwiperSlide key={index}>
                                     <Link to={`/movie/${movie.id}`} key={index} className='w-[22rem] h-96 rounded-lg flex flex-col items-center justify-center'>
                                         <img className='object-cover w-full h-64' src={baseUrl + movie?.backdrop_path} alt="" />

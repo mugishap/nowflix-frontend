@@ -3,10 +3,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { baseUrl } from '../constants/movie';
 import { Link } from 'react-router-dom';
+import { Movie } from '../types';
 
 
 interface Props {
-    category: any
+    category: {
+        name:string,
+        movies:Movie[]
+    }
 }
 
 const Category: React.FC<Props> = ({ category }) => {
@@ -36,7 +40,7 @@ const Category: React.FC<Props> = ({ category }) => {
 
             >
                 {
-                    category.movies.map((movie: any, index: number) => (
+                    category.movies.map((movie: Movie, index: number) => (
                         <SwiperSlide key={index}>
                             <Link to={`/movie/${movie.id}`} key={index} className='w-[22rem] h-96 rounded-lg flex flex-col items-center justify-center'>
                                 <img className='object-cover w-full h-64' src={baseUrl + movie?.backdrop_path} alt="" />

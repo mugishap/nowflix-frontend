@@ -1,18 +1,33 @@
 import { createSlice, TaskAbortError } from '@reduxjs/toolkit'
+import { Movie } from '../../types'
 
 const initialState: {
-    upcoming: Array<any>,
-    topRated: Array<any>,
-    popular: Array<any>,
-    nowPlaying: Array<any>,
-    latest: Array<any>,
-    searchResults: Array<any>,
+    upcoming: Array<Movie>,
+    topRated: Array<Movie>,
+    popular: Array<Movie>,
+    nowPlaying: Array<Movie>,
+    trending: Array<Movie>,
+    netflixOriginals: Array<Movie>,
+    latest: Movie | null,
+    action: Array<Movie>,
+    horror: Array<Movie>,
+    comedy: Array<Movie>,
+    romance: Array<Movie>,
+    documentaries: Array<Movie>,
+    searchResults: Array<Movie>,
 } = {
     upcoming: [],
     topRated: [],
     popular: [],
     nowPlaying: [],
-    latest: [],
+    latest: null,
+    trending: [],
+    netflixOriginals: [],
+    action: [],
+    horror: [],
+    comedy: [],
+    romance: [],
+    documentaries: [],
     searchResults: []
 }
 
@@ -20,37 +35,28 @@ const moviesSlice = createSlice({
     name: "movies",
     initialState,
     reducers: {
-        setUpcoming: (state, { payload }) => {
-            state.upcoming = payload
-        },
-        setTopRated: (state, { payload }) => {
-            state.topRated = payload
-        },
-        setPopular: (state, { payload }) => {
-            state.popular = payload
-        },
-        setNowPlaying: (state, { payload }) => {
-            state.nowPlaying = payload
-        },
-        setLatest: (state, { payload }) => {
-            state.latest = payload
-        },
-        setSearchResults: (state, { payload }) => {
-            state.searchResults = payload
-        },
-        setAllMovies: (state, { payload }) => {
+        setMovies: (state, { payload }) => {
             state.upcoming = payload.upcoming
             state.topRated = payload.topRated
             state.popular = payload.popular
             state.nowPlaying = payload.nowPlaying
             state.latest = payload.latest
+
+            state.romance = payload.romance
+            state.horror = payload.horror
+            state.action = payload.action
+            state.documentaries = payload.documentaries
+            state.comedy = payload.comedy
+            state.trending = payload.trending
+            state.netflixOriginals = payload.netflixOriginals
+
         },
         clearMovies: (state) => {
             state.upcoming = []
             state.topRated = []
             state.popular = []
             state.nowPlaying = []
-            state.latest = []
+            state.latest = null
             state.searchResults = []
         }
     }
