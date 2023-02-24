@@ -15,7 +15,6 @@
     "react-awesome-reveal": "^4.2.3",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
-    "react-lazyload": "^3.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
     "react-toastify": "^9.1.1",
