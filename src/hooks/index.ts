@@ -1,15 +1,23 @@
 import api from "../api";
 import { setMovie, setSimilarMovies } from "../redux/slices/movieSlice";
 import { setAllMovies, setSearchResults } from "../redux/slices/moviesSlice";
+import { requests } from "../utils/requests";
 
 export const getMovies = async (dispatch: any, setError: Function, setLoading: Function, page?: number) => {
     try {
         const popular = await (await api.get(`/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
-        const topRated = await (await api.get(`/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
-        const upcoming = await (await api.get(`/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
-        const nowPlaying = await (await api.get(`/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
+        const topRated = await (await api.get(`/movie/top_rated?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
+        const upcoming = await (await api.get(`/movie/upcoming?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
+        const nowPlaying = await (await api.get(`/movie/now_playing?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
         const latest = await (await api.get(`/movie/latest?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&page=${page ? page : 1}`)).data
-        dispatch(setAllMovies({ popular, topRated, latest, upcoming, nowPlaying }));
+
+        const romance = await (await api.get(`${requests.fetchRomanceMovies}page=${page ? page : 1}`)).data
+        const action = await (await api.get(`${requests.fetchActionMovies}&page=${page ? page : 1}`)).data
+        const horror = await (await api.get(`${requests.fetchHorrorMovies}&page=${page ? page : 1}`)).data
+        const netflixOriginals = await (await api.get(`${requests.fetchComedyMovies}&page=${page ? page : 1}`)).data
+        const documentaries = await (await api.get(`${requests.fetchDocumentaries}&page=${page ? page : 1}`)).data
+
+        dispatch(setAllMovies({ popular, topRated, latest, upcoming, nowPlaying, romance, action, horror, netflixOriginals, documentaries }));
         setLoading(false)
     }
     catch (error: any) {

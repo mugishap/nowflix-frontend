@@ -9,7 +9,6 @@ import { BiPlay } from 'react-icons/bi';
 import Select from '../../components/CustomSelect';
 import { Movie } from '../../types';
 import { getMovies } from '../../hooks';
-import { setSimilarMovies } from '../../redux/slices/movieSlice';
 
 const Movies = () => {
     const dispatch = useDispatch()
@@ -42,7 +41,8 @@ const Movies = () => {
 
     useEffect(() => {
         getMovies(dispatch, setError, setLoading, page)
-        setMovies([...moviesSlice[type].results])
+        const data = moviesSlice[type].results
+        setMovies(data)
     }, [page])
 
     const getPageNumbers = () => {

@@ -8,10 +8,11 @@ const initialState: {
     nowPlaying: Array<Movie>,
     trending: Array<Movie>,
     netflixOriginals: Array<Movie>,
-    latest: Movie | null,
+    latest?: Movie | null,
+    topRate: Array<Movie>,
     action: Array<Movie>,
-    horror: Array<Movie>,
     comedy: Array<Movie>,
+    horror: Array<Movie>,
     romance: Array<Movie>,
     documentaries: Array<Movie>,
     searchResults: Array<Movie>,
@@ -23,9 +24,10 @@ const initialState: {
     latest: null,
     trending: [],
     netflixOriginals: [],
+    topRate: [],
     action: [],
     horror: [],
-    comedy: [],
+    comedy:[],
     romance: [],
     documentaries: [],
     searchResults: []
@@ -35,7 +37,25 @@ const moviesSlice = createSlice({
     name: "movies",
     initialState,
     reducers: {
-        setMovies: (state, { payload }) => {
+        setUpcoming: (state, { payload }) => {
+            state.upcoming = payload
+        },
+        setTopRated: (state, { payload }) => {
+            state.topRated = payload
+        },
+        setPopular: (state, { payload }) => {
+            state.popular = payload
+        },
+        setNowPlaying: (state, { payload }) => {
+            state.nowPlaying = payload
+        },
+        setLatest: (state, { payload }) => {
+            state.latest = payload
+        },
+        setSearchResults: (state, { payload }) => {
+            state.searchResults = payload
+        },
+        setAllMovies: (state, { payload }) => {
             state.upcoming = payload.upcoming
             state.topRated = payload.topRated
             state.popular = payload.popular
@@ -43,13 +63,11 @@ const moviesSlice = createSlice({
             state.latest = payload.latest
 
             state.romance = payload.romance
-            state.horror = payload.horror
             state.action = payload.action
-            state.documentaries = payload.documentaries
+            state.horror = payload.horror
             state.comedy = payload.comedy
-            state.trending = payload.trending
             state.netflixOriginals = payload.netflixOriginals
-
+            state.documentaries = payload.documentaries
         },
         clearMovies: (state) => {
             state.upcoming = []

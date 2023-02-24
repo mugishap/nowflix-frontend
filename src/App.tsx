@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import 'react-toastify/dist/ReactToastify.css'
 import { toast, ToastContainer } from 'react-toastify'
 import 'swiper/css';
+import NotFound from './pages/404/NotFound';
 const Movies = lazy(() => import('./pages/Movies/Movies'))
 const Home = lazy(() => import('./pages/Home/Home'))
 const Movie = lazy(() => import('./pages/Movie/Movie'))
@@ -48,6 +49,7 @@ function App() {
                 <Route element={<Home />} path="/"></Route>
                 <Route element={<Movie />} path="/movie/:movieId"></Route>
                 <Route element={<Movies />} path="/movies"></Route>
+                <Route element={<NotFound />} path="*"></Route>
               </Routes>
             </BrowserRouter>
         }

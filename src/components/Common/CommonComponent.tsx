@@ -33,7 +33,7 @@ const CommonComponent: React.FC<{ children: ReactNode }> = ({ children }) => {
     ]
 
     return (
-        <div className="relative min-h-screen bg-black/90 w-screen flex flex-col overflow-hidden">
+        <div className="relative min-h-screen bg-black/90 w-full flex flex-col justify-between overflow-hidden">
             {
                 showNavbar ?
                     <Slide direction='left' className="z-50 " triggerOnce>
