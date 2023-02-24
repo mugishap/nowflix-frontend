@@ -37,7 +37,7 @@ const CommonComponent: React.FC<{ children: ReactNode }> = ({ children }) => {
             {
                 showNavbar ?
                     <Slide direction='left' className="z-50 " triggerOnce>
-                        <div className='absolute w-screen justify-center h-screen bg-black/80 flex items-center z-[2]'>
+                        <div className='absolute w-screen backdrop-blur-md justify-center h-screen bg-black/80 flex items-center z-[2]'>
                             <div className='absolute z-[3] w-screen h-screen' onClick={() => setShowNavbar(false)}></div>
                             <div className='w-8/12 md:w-6/12 h-4/5 rounded flex items-center justify-center bg-gray-900 z-[4]'>
                                 <div className="flex flex-col w-fit">

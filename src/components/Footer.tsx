@@ -89,7 +89,7 @@ const Footer: React.FC = () => {
           <div className="flex  flex-col items-start justify-start xl:justify-center xl:space-x-8 xl:flex-row">
             <div className="flex justify-start items-center space-x-4">
               <div className="cursor-pointer w-32">
-                <img src={Logo} alt="logo" className="" />
+                <img loading="lazy" src={Logo} alt="logo" className="" />
               </div>
             </div>
             <div className="mt-12 xl:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-y-12 sm:gap-y-0 w-full md:w-auto sm:gap-x-20 md:gap-x-28 xl:gap-8">

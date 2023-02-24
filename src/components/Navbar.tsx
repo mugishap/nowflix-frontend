@@ -36,7 +36,7 @@ const Navbar: React.FC<Props> = ({ navBarLinks, showSearch, showNavbar, setShowS
                 <div className='hidden lg:flex'>
                     <span className='font-bold text-xl mr-10 text-white'>Kids</span>
                     <Link to={"/profile"}>
-                        <img src={account} className='rounded' alt="" />
+                        <img loading="lazy" src={account} className='rounded' alt="" />
                     </Link>
                 </div>
             </div>

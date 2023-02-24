@@ -47,7 +47,7 @@ const Category: React.FC<Props> = ({ category }) => {
                         category.movies.map((movie: Movie, index: number) => (
                             <SwiperSlide key={index}>
                                 <Link to={`/movie/${movie.id}`} key={index} className='w-[22rem] h-96 rounded-lg flex flex-col items-center justify-center'>
-                                    <img className='rounded object-cover w-full h-64' src={baseUrl + movie?.backdrop_path} alt="" />
+                                    <img loading='lazy' className='rounded object-cover w-full h-64' src={baseUrl + movie?.backdrop_path} alt="" />
                                     <span className='text-white font-bold text-xl mt-2'>{movie.title}</span>
                                 </Link>
                             </SwiperSlide>

@@ -101,14 +101,16 @@ const Movies = () => {
                                             scrollbar={{ draggable: true }}
                                             modules={[Navigation, Pagination, Scrollbar, A11y]}
                                             className="h-full"
-                                            autoplay={{ delay: 1000 }}
+                                            autoplay={{ delay: 3000 }}
                                         >
                                             {
                                                 latest.map((movie: Movie, index: number) => (
                                                     <SwiperSlide key={index} className="h-full">
                                                         <div style={{ backgroundImage: `url('${baseUrl + movie.backdrop_path}')`, backgroundAttachment: 'fixed', backgroundRepeat: "no-repeat", backgroundSize: 'cover' }} className='justify-start items-end flex w-full h-full rounded-lg'>
                                                             <div className='bg-gradient-to-t from-black/90 via-black/70 pl-8 pt-16 to-transparent w-full flex h-full items-start justify-end flex-col '>
-                                                                <Fade className='text-white mb-10 text-5xl font-extrabold'>{movie.original_title}</Fade>
+                                                                <Fade cascade
+                                                                    duration={100}
+                                                                    triggerOnce className='text-white mb-10 text-5xl font-extrabold'>{movie.original_title}</Fade>
                                                                 <Link to={`/movie/${movie.id}`} className='w-fit px-4 mb-12 h-14 flex items-center justify-center rounded bg-white mr-4 text-center font-bold text-2xl text-black hover:bg-white/80'>
                                                                     <BiPlay size={40} className="" />
                                                                     <span>
@@ -135,7 +137,7 @@ const Movies = () => {
                                     {
                                         movies.map((movie: Movie, index: number) => (
                                             <Link to={`/movie/${movie.id}`} key={index} className='w-11/12 h-72 rounded-lg flex flex-col items-center justify-center'>
-                                                <img className='object-cover w-full h-3/4' src={baseUrl + movie.poster_path} alt="" />
+                                                <img loading='lazy' className='object-cover w-full h-3/4' src={baseUrl + movie.poster_path} alt="" />
                                                 <span className='text-white font-bold text-xl mt-2'>{movie.title}</span>
                                             </Link>
                                         ))

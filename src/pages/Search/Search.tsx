@@ -71,7 +71,7 @@ const Search = () => {
                             {
                                 results.slice(0, 10).map((movie: Movie, index: number) => (
                                     <Link to={`/movie/${movie.id}`} key={index} className='w-11/12 h-72 rounded-lg flex flex-col items-center justify-center'>
-                                        <img className='object-cover w-full h-3/4' src={baseUrl + movie.poster_path} alt="" />
+                                        <img loading='lazy' className='object-cover w-full h-3/4' src={baseUrl + movie.poster_path} alt="" />
                                         <span className='text-white font-bold text-xl mt-2'>{movie.title}</span>
                                     </Link>
                                 ))
