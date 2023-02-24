@@ -5,7 +5,15 @@ export interface Genre {
   name?: string
 }
 
+
+export interface Country {
+  id?: number
+  name?: string
+}
+
 export interface Movie {
+  genres: Genre[]
+  production_countries: Country[]
   votes?: number | any
   original_title?: string
   title?: string

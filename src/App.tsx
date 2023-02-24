@@ -6,6 +6,9 @@ import { useDispatch } from "react-redux";
 import 'react-toastify/dist/ReactToastify.css'
 import { toast, ToastContainer } from 'react-toastify'
 import 'swiper/css';
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 import NotFound from './pages/404/NotFound';
 const Movies = lazy(() => import('./pages/Movies/Movies'))
 const Home = lazy(() => import('./pages/Home/Home'))

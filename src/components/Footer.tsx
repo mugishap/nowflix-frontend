@@ -142,7 +142,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="mt-12 flex  xl:justify-between xl:flex-row flex-col-reverse items-center xl:items-start w-full ">
             <p className="mt-10 md:mt-12 xl:mt-0 text-sm leading-none text-white">
-              2022 Nowflix LTD. All Rights Reserved
+              {new Date().getFullYear()} Nowflix LTD. All Rights Reserved
             </p>
             <div className="mt-10 md:mt-12 xl:mt-0 md:flex-row flex-col flex md:justify-center w-full md:w-auto justify-start items-start space-y-4 md:space-y-0 md:items-center md:space-x-4 xl:space-x-6">
               {links.map((link) => {

@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-import CommonComponent from '../../components/Common/CommonComponent'
-import { baseUrl } from '../../constants/movie'
+import CommonComponent from '../../../components/Common/CommonComponent'
+import { baseUrl } from '../../../constants/movie'
 import { BiPlay } from 'react-icons/bi';
-import Select from '../../components/CustomSelect';
-import { Movie } from '../../types';
-import { getMovies } from '../../hooks';
+import Select from '../../../components/CustomSelect';
+import { Movie } from '../../../types';
+import { getMovies } from '../../../hooks';
 import { Fade, Slide } from 'react-awesome-reveal';
 
 const Movies = () => {
@@ -97,12 +97,12 @@ const Movies = () => {
                                     <div className='w-full h-full'>
                                         <Swiper
                                             spaceBetween={10}
-
                                             slidesPerView={1}
+                                            navigation={true}
                                             scrollbar={{ draggable: true }}
                                             modules={[Navigation, Pagination, Scrollbar, A11y]}
                                             className="h-full"
-                                            autoplay={{ delay: 1, disableOnInteraction: false }}
+                                            autoplay={{ delay: 1000 }}
                                         >
                                             {
                                                 latest.map((movie: Movie, index: number) => (
