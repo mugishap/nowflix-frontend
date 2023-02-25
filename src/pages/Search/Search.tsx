@@ -23,6 +23,10 @@ const Search = () => {
         getSearchedMovies(query as string, dispatch, setError, setLoading, page)
     }, [page])
 
+    useEffect(() => {
+        setResults(movies)
+    }, [movies])
+
     const getPageNumbers = () => {
         const pageNumbers = [];
         if (totalPages > 10) {
@@ -70,7 +74,7 @@ const Search = () => {
                         <div className='w-full grid-cols-1 grid  sm:grid-cols-2 md:grid-cols-3 mlg:grid-cols-4 lg:grid-cols-5'>
                             {
                                 results.slice(0, 10).map((movie: Movie, index: number) => (
-                                    <Link to={`/movie/${movie.id}`} key={index} className='w-11/12 h-72 rounded-lg flex flex-col items-center justify-center'>
+                                    <Link to={`/movie/${movie.id}`} key={index} className='hover:scale-105 duration-200 w-11/12 h-72 rounded-lg flex flex-col items-center justify-center'>
                                         <img loading='lazy' className='object-cover w-full h-3/4' src={baseUrl + movie.poster_path} alt="" />
                                         <span className='text-white font-bold text-xl mt-2'>{movie.title}</span>
                                     </Link>

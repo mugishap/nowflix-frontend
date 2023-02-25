@@ -65,7 +65,7 @@ const CommonComponent: React.FC<{ children: ReactNode }> = ({ children }) => {
                     null
             }
             <Navbar navBarLinks={navBarLinks} showNavbar={showNavbar} setShowNavbar={setShowNavbar} setShowSearch={setShowSearch} showSearch={false} />
-            <Slide direction='up' triggerOnce>
+            <Slide direction='up' triggerOnce duration={1000}>
                 <div className=" w-full h-full flex flex-col items-center">{children}</div>
             </Slide>
             <Footer />

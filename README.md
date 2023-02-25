@@ -1,6 +1,8 @@
+
 ![Nowflix Logo](https://res.cloudinary.com/precieux/image/upload/v1677242022/logo_xlw4wu.png)
 
-<h3 align="center">Nowflix Frontend</h3>
+
+## <h3 align="center">Nowflix Frontend</h3>
 
 <div align="center">
 

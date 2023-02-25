@@ -30,6 +30,7 @@ export const getSearchedMovies = async (query: string, dispatch: any, setError: 
     try {
         const response = await api.get(`/search/movie?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US&query=${query}&page=${page ? page : 1}&include_adult=false`)
         const data = response.data
+        console.log(data);
         dispatch(setSearchResults(data.results));
         setLoading(false)
     } catch (error) {
