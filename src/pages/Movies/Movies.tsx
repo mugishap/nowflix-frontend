@@ -37,14 +37,12 @@ const Movies = () => {
     useEffect(() => {
         const data = moviesSlice[type].results
         setMovies(data)
-        console.log(data);
     }, [type])
 
     useEffect(() => {
         setLoading(true)
         getMovies(dispatch, setError, setLoading, page)
         const data = moviesSlice[type].results
-        console.log(data);
         setMovies(data)
     }, [page])
 

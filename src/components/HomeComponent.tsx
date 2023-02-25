@@ -6,7 +6,6 @@ import Category from './Category'
 
 const HomeComponent = () => {
     const { moviesSlice } = useSelector((state: any) => state)
-console.log(moviesSlice);
 
     const categories = [
         {

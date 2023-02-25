@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import CommonComponent from '../../components/Common/CommonComponent'
 import { baseUrl } from '../../constants/movie'
 import { getMovies, getSearchedMovies } from '../../hooks'
@@ -26,6 +27,10 @@ const Search = () => {
     useEffect(() => {
         setResults(movies)
     }, [movies])
+
+    useEffect(() => {
+        toast.error(error)
+    }, [error])
 
     const getPageNumbers = () => {
         const pageNumbers = [];
