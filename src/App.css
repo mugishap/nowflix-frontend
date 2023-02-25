@@ -31,3 +31,10 @@
 .swiper-scrollbar-thumb.swiper-scrollbar-thumb {
     background-color: #db202cba;
 }
+
+.truncate {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

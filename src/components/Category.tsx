@@ -38,7 +38,7 @@ const Category: React.FC<Props> = ({ category }) => {
             <div className='w-full flex items-center justify-center'>
                 <Swiper
                     spaceBetween={3}
-                    slidesPerView={Math.floor(screenWidth / 320)}
+                    slidesPerView={Math.floor(screenWidth / 340)}
                     scrollbar={{ draggable: true }}
                     modules={[Navigation, Pagination, A11y]}
                     autoplay={{ delay: category.delay, disableOnInteraction: false }}
@@ -46,9 +46,9 @@ const Category: React.FC<Props> = ({ category }) => {
                     {
                         category.movies.map((movie: Movie, index: number) => (
                             <SwiperSlide key={index}>
-                                <Link to={`/movie/${movie.id}`} key={index} className='hover:scale-105 duration-200 w-[22rem] h-96 rounded-lg flex flex-col items-center justify-center'>
+                                <Link to={`/movie/${movie.id}`} key={index} className='hover:scale-105 duration-200 w-[22rem] h-96 rounded-lg flex flex-col items-start justify-center'>
                                     <img loading='lazy' className='rounded object-cover w-full h-64' src={baseUrl + movie?.backdrop_path} alt="" />
-                                    <span className='text-white font-bold text-xl mt-2'>{movie.title}</span>
+                                    <span className='text-white font-bold text-xl mt-2 truncate w-11/12'>{movie.title}</span>
                                 </Link>
                             </SwiperSlide>
                         ))

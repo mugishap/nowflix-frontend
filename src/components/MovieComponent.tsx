@@ -96,7 +96,7 @@ const MovieComponent: React.FC<Props> = ({ }) => {
                                         <SwiperSlide key={index}>
                                             <Link to={`/movie/${movie.id}`} key={index} className='hover:scale-105 duration-200  w-[22rem] h-96 rounded-lg flex flex-col items-center justify-center'>
                                                 <img loading='lazy' className='object-cover w-full h-64' src={baseUrl + movie?.backdrop_path} alt="" />
-                                                <span className='text-white font-bold text-xl mt-2'>{movie.title}</span>
+                                                <span className='text-white font-bold text-xl mt-2 w-11/12 truncate' title={movie.title}>{movie.title}</span>
                                             </Link>
                                         </SwiperSlide>
                                     ))
