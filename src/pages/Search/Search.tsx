@@ -29,7 +29,7 @@ const Search = () => {
     }, [movies])
 
     useEffect(() => {
-        toast.error(error)
+        if (error) toast.error(error)
     }, [error])
 
     const getPageNumbers = () => {
